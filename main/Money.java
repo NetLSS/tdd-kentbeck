@@ -26,6 +26,9 @@ public class Money implements Expression {
   }
 
   public Expression plus(Expression addend) {
+    if (addend instanceof Money) {
+      return new Money(amount + ((Money)addend).amount, currency);
+    }
     return new Sum(this, addend);
   }
 
